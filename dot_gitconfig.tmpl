@@ -1,0 +1,12 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = {{ .git.name }}
+	email = {{ .git.email }}
+[core]
+	# editor = code --wait
+	editor = nvim
+[alias]
+	diff-origin = !git fetch && git diff origin/$(git branch --show-current)
+	prune-gone = "!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' refs/heads | awk '$2 == \"[gone]\"{print $1}' | xargs -r git branch -d"
+	prune-gone-force = "!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' refs/heads | awk '$2 == \"[gone]\"{print $1}' | xargs -r git branch -D"
