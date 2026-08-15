@@ -6,12 +6,19 @@
 [core]
 	# editor = code --wait
 	editor = nvim
+	pager = delta
 [diff]
 	algorithm = histogram
 	colorMoved = default
 	colorMovedWS = allow-indentation-change
+[interactive]
+	diffFilter = delta --color-only
 [delta]
+	navigate = true  # use n and N to move between diff sections
+	dark = true      # or `light = true`, or omit for auto-detection
 	map-styles = bold purple => syntax "#3f2d56", bold cyan => syntax "#1e3a5f"
+[merge]
+	conflictStyle = zdiff3
 [alias]
 	diff-origin = !git fetch origin && git diff \"origin/$(git branch --show-current)\"
 	reset-origin = !git fetch origin && git reset --hard \"origin/$(git branch --show-current)\"
