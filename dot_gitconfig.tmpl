@@ -30,5 +30,5 @@
 	prune-gone-force = "!git gone | xargs -r git branch -D"
 	
 	# replay my own commits onto <ref> (default @{upstream}), dropping any commit below them that <ref> has abandoned
-	restack = "!f() { u=$1; [ -z \"$u\" ] && u=@{upstream}; me=$(git config user.email); base=$(git log --format='%H %ae' \"$u..HEAD\" | awk -v me=\"$me\" '$2 != me { print $1; exit }'); git rebase --onto \"$u\" \"${base:-$(git merge-base \"$u\" HEAD)}\"; }; f"
+	restack = "!f() { u=$1; [ -z \"$u\" ] && u=@{upstream}; me=$(git config user.email); tip=$(git log -1 --format=%ae \"$u..HEAD\"); [ -n \"$tip\" ] && [ \"$tip\" != \"$me\" ] && { echo \"restack: top of $u..HEAD is not authored by $me\" >&2; return 1; }; base=$(git log --format='%H %ae' \"$u..HEAD\" | awk -v me=\"$me\" '$2 != me { print $1; exit }'); git rebase --onto \"$u\" \"${base:-$(git merge-base \"$u\" HEAD)}\"; }; f"
 	restack-origin = !git fetch origin && git restack \"origin/$(git branch --show-current)\"
