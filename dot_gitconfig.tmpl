@@ -10,6 +10,8 @@
 	diff-origin = !git fetch origin && git diff \"origin/$(git branch --show-current)\"
 	reset-origin = !git fetch origin && git reset --hard \"origin/$(git branch --show-current)\"
 
+	log-today = "!git log --all --no-merges --author=\"$(git config user.email)\" --since=midnight --date=format:'%I:%M %p' --format='%C(auto)%h %C(dim)%ad%C(reset)%C(auto)%d%C(reset) %s'"
+
 	gone = "!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' refs/heads | awk '$2 == \"[gone]\"{print $1}'"
 	prune-gone = "!git gone | xargs -r git branch -d"
 	prune-gone-force = "!git gone | xargs -r git branch -D"
