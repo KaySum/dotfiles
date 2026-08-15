@@ -8,6 +8,8 @@
 	editor = nvim
 [diff]
 	algorithm = histogram
+	colorMoved = zebra
+	colorMovedWS = allow-indentation-change
 [alias]
 	diff-origin = !git fetch origin && git diff \"origin/$(git branch --show-current)\"
 	reset-origin = !git fetch origin && git reset --hard \"origin/$(git branch --show-current)\"
