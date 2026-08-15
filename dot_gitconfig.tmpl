@@ -8,6 +8,8 @@
 	editor = nvim
 [alias]
 	diff-origin = !git fetch origin && git diff \"origin/$(git branch --show-current)\"
+	reset-origin = !git fetch origin && git reset --hard \"origin/$(git branch --show-current)\"
+
 	gone = "!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' refs/heads | awk '$2 == \"[gone]\"{print $1}'"
 	prune-gone = "!git gone | xargs -r git branch -d"
 	prune-gone-force = "!git gone | xargs -r git branch -D"
