@@ -42,3 +42,5 @@
 
 theme = TokyoNight Moon
 font-size = 18
+
+macos-option-as-alt = true
