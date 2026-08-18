@@ -1,6 +1,17 @@
 {{- $gitName := promptStringOnce . "git.name" "Git name" -}}
 {{- $gitEmail := promptStringOnce . "git.email" "Git email" -}}
 
+[merge]
+    command = "nvim"
+    args = [
+        "-d",
+        "{{ `{{ .Destination }}` }}",
+        "{{ `{{ .Source }}` }}",
+        "{{ `{{ .Target }}` }}"
+    ]
+[diff]
+    pager = "delta"
+
 [data.git]
     name = {{ $gitName | quote }}
     email = {{ $gitEmail | quote }}
