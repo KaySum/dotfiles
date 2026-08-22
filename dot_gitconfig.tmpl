@@ -23,7 +23,8 @@
 	diff-origin = !git fetch origin && git diff \"origin/$(git branch --show-current)\"
 	reset-origin = !git fetch origin && git reset --hard \"origin/$(git branch --show-current)\"
 
-	log-today = "!git log --all --no-merges --author=\"$(git config user.email)\" --since=midnight --date=format:'%I:%M %p' --format='%C(auto)%h %C(dim)%ad%C(reset)%C(auto)%d%C(reset) %s'"
+	# log my commits authored on <day> (default today); <day> is anything git can parse, e.g. 2026-08-16 or "3 days ago"
+	log-day = "!f() { d=${1:-today}; e() { git rev-parse --since=\"$d $1\" | sed 's/.*=//'; }; m=$(git log --exclude=refs/stash --all --no-merges --author-date-order --author=\"$(git config user.email)\" --format='%H %at' | awk -v s=$(e 00:00) -v u=$(e 23:59:59) '$2 >= s && $2 <= u { print $1 }'); [ -n \"$m\" ] || return 0; git log --no-walk=unsorted --date=format:'%I:%M %p' --format='%C(auto)%h %C(dim)%ad%C(reset)%C(auto)%d%C(reset) %s' $m; }; f"
 
 	gone = "!git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' refs/heads | awk '$2 == \"[gone]\"{print $1}'"
 	prune-gone = "!git gone | xargs -r git branch -d"
