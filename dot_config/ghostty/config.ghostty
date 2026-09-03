@@ -45,7 +45,7 @@ font-size = 18
 
 macos-option-as-alt = true
 
-keybind = cmd+shift+h=previous_tab
-keybind = cmd+shift+l=next_tab
+keybind = cmd+h=previous_tab
+keybind = cmd+l=next_tab
 
 keybind = cmd+shift+r=prompt_tab_title
