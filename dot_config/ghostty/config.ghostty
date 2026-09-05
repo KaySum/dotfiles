@@ -65,6 +65,4 @@ keybind = alt+cmd+j=resize_split:down,10
 keybind = alt+cmd+k=resize_split:up,10
 keybind = alt+cmd+l=resize_split:right,10
 
-keybind = alt+z=toggle_split_zoom
-
 keybind = cmd+k=unbind
