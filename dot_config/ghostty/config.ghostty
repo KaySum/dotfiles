@@ -40,6 +40,11 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
+macos-icon = custom-style
+macos-icon-ghost-color = #c099ff
+macos-icon-screen-color = #222436,#82aaff
+macos-icon-frame = chrome
+
 theme = TokyoNight Moon
 font-size = 18
 
