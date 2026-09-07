@@ -43,6 +43,8 @@
 theme = TokyoNight Moon
 font-size = 18
 
+mouse-hide-while-typing = true
+
 macos-option-as-alt = true
 
 keybind = cmd+shift+r=prompt_tab_title
